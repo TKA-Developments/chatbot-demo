@@ -10,7 +10,7 @@ const getMatchesFromEmbeddings = async (embeddings: number[], pinecone: Pinecone
   if (!process.env.PINECONE_INDEX_NAME) {
     throw (new Error("PINECONE_INDEX_NAME is not set"))
   }
-
+  console.log('ping')
   const index = pinecone!.Index(process.env.PINECONE_INDEX_NAME);
   const queryRequest = {
     vector: embeddings,
@@ -21,6 +21,7 @@ const getMatchesFromEmbeddings = async (embeddings: number[], pinecone: Pinecone
     const queryResult = await index.query({
       queryRequest
     })
+    console.log('pong')
     return queryResult.matches?.map(match => ({
       ...match,
       metadata: match.metadata as Metadata
