@@ -4,15 +4,15 @@ import * as Ably from 'ably';
 import { CallbackManager } from "langchain/callbacks";
 import { LLMChain } from "langchain/chains";
 import { ChatOpenAI } from "langchain/chat_models";
-import { OpenAIEmbeddings } from 'langchain/embeddings';
-import { OpenAI } from "langchain/llms";
+import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
+import { OpenAI } from "langchain/llms/openai";
 import { PromptTemplate } from "langchain/prompts";
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { uuid } from 'uuidv4';
 import { summarizeLongDocument } from './summarizer';
 
 import { ConversationLog } from './conversationLog';
-import { Metadata, getMatchesFromEmbeddings } from './embeddings';
+import { Metadata, getMatchesFromEmbeddings } from './matches';
 import { templates } from './templates';
 
 
